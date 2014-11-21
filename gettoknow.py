@@ -3,18 +3,22 @@ import json
 import feedparser
 import globalvoices
 
+
+repeatStory = 6
+
 app = Flask(__name__)
 
 @app.route("/")
 def index():
+
     return render_template("stories.html",
         country_list_json_text=json.dumps(globalvoices.country_list())
     )
 
 @app.route("/country/<country>")
 def country(country):
-    stories = globalvoices.recent_stories_from( country )
-    return render_template("stories.html",
+    #Set the number os stories to show
+    stories = globalvoices.recent_stories_from( country, repeatStory ) 
         country_list_json_text=json.dumps(globalvoices.country_list()),
         country_name=country,
         stories=stories
