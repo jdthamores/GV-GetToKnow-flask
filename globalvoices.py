@@ -15,7 +15,7 @@ path_lookup = json.loads(f.read())
 
 def recent_stories_from(country , repeatStory):
     '''
-    Return a list of the last 3 stories for a given country
+    Return a list of the last 6 stories for a given country
     '''
     h = HTMLParser.HTMLParser()
     raw_content = urlopen( _content_url_via_google_for( country , repeatStory) ).read()
