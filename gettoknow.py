@@ -18,7 +18,8 @@ def index():
 @app.route("/country/<country>")
 def country(country):
     #Set the number os stories to show
-    stories = globalvoices.recent_stories_from( country, repeatStory ) 
+    stories = globalvoices.recent_stories_from( country, repeatStory )
+    return render_template("stories.html",
         country_list_json_text=json.dumps(globalvoices.country_list()),
         country_name=country,
         stories=stories
